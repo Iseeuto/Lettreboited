@@ -1,0 +1,8 @@
+*{
+    color :white;
+    height: 100%;
+}
+
+body{
+    background: linear-gradient(to bottom, #090909,#474646);
+}

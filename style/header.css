@@ -1,0 +1,32 @@
+#LettreBoited{
+    font-family: 'Hammersmith One', sans-serif;
+    font-size: 115%;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    width: 100%;
+    border-bottom: solid white 1px;
+    height: 10%;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+}
+
+span{
+    display: flex;
+    margin-right: 2%;
+    align-items: center;
+}
+
+input,button{
+    display: flex;
+    height: 40%;
+    background-color: gray;
+}
+
