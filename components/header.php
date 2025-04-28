@@ -1,8 +1,17 @@
 <link href="style/header.css" rel="stylesheet">
 
 <header>
-    <div><span id = "LettreBoited">LettreBoited</span><span><input type = "text" id ="search" name= "search"><button type = "submit"></button></form></span></div>
-    <div><span id = "username">Non connecté-e</span><span><?php include __DIR__ . "/avatar.html"?></span></div>
-
+    <!-- Gauche (titre + recherche) -->
+    <div id="left">
+        <span id="title">LettreBoited</span>
+        <form method="get" action="" target="_blank">
+            <span id="search-bar"><input id="search"><?php include "searchicon.html" ?></span>
+        </form>
+    </div>
+    <!-- Droite (Connection) -->
+     <div id="right">
+        <span>Non connecté·e</span>
+        <?php include "avatar.html" ?>
+     </div>
 </header>
 
