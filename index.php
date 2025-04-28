@@ -1,3 +1,8 @@
+
 <?php
-echo "<h1>PHP dit Hello World ! </h1>";
+
+require_once __DIR__ . "/class/Autoloader.php";
+
+
+
 ?>
