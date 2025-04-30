@@ -17,7 +17,7 @@ ob_start()?>
 
         <button onclick="sendForm()">Rechercher</button>
 
-        <div>
+        <div id="filters-container">
 
             <div class="filter">
                 <h1>Tags</h1>

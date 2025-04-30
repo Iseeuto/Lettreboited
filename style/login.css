@@ -1,0 +1,57 @@
+
+#content {
+    width: 100%;
+    height: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 25%;
+    height: 80%;
+    background-color: rgb(24, 24, 24);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0em 0em 5em black;
+}
+
+form h1 {
+    font-family: 'Montserrat';
+    text-align: center;
+}
+
+#error {
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.field p {
+    font-family: 'Poppins';
+}
+
+.field input {
+    transition: all .1s ease-in-out;
+    background-color: rgb(15, 15, 15);
+    font-family: 'Poppins';
+    font-size: medium;
+    border: solid 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.field input:focus {
+    outline: none;
+}
+
+form button {
+    font-family: "Montserrat";
+    font-size: large;
+    background-color: rgba(240, 248, 255, 0);
+    padding: 5px;
+    border-radius: 10px;
+}

@@ -1,3 +1,12 @@
+
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
+
 <link href="style/header.css" rel="stylesheet">
 
 <header>
@@ -8,9 +17,12 @@
     <!-- Droite (Connection) -->
      <div id="right">
         <a href="login.php">
-        <span>Non connecté·e</span>
+            <?php if (isset($_SESSION["logged_in"])): ?>
+                <span>Connecté</span>
+            <?php else: ?>
+                <span>Se Connecter</span>
+            <?php endif; ?>
         <?php include "html/avatar.html" ?>
         </a>
      </div>
 </header>
-
