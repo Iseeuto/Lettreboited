@@ -4,7 +4,7 @@
     height: 90%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -13,9 +13,26 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
 }
+
+#filters button {
+    background-color: rgba(240, 248, 255, 0);
+    border-radius: 10px;
+    width: 50%;
+    border: solid white 2px;
+    font-family: 'Poppins';
+    padding: 10px;
+    margin-bottom: 5%;
+}
+
+ #filters div {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ }
 
 .filter {
     width: 100%;
@@ -33,26 +50,41 @@
 
 .filter div {
     overflow-y: auto; 
-    width: 90%;
+    width: 80%;
     border-top: solid white 2px;
 }
 
-.filter div p {
+.filter div .option {
     user-select: none;
     font-family: 'Montserrat';
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.filter div p:hover {
+.filter div .option:hover {
     cursor: pointer;
     background-color: white;
     color: black;
     border-radius: 5px;
 }
 
+.option.selected {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
 .poster-container {
-    width: 80%;
+    width: 75%;
     height: 90%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

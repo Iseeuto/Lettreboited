@@ -15,37 +15,42 @@ ob_start()?>
 
     <div id="filters">
 
-        <div class="filter">
-            <h1>Tags</h1>
-            <div>
-                
-                <?php
-                    $statement = $bdd->requete("SELECT * FROM tag");
-                    $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                    foreach ($result as $tag): ?>
-                    <p><?= $tag->nom ?></p>
-                <?php 
-                    endforeach ?>
+        <button onclick="sendForm()">Rechercher</button>
+
+        <div>
+
+            <div class="filter">
+                <h1>Tags</h1>
+                <div>
+                    
+                    <?php
+                        $statement = $bdd->requete("SELECT * FROM tag");
+                        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($result as $tag): ?>
+                        <p data-name="tags[]" data-value=<?= $tag->nom ?> class="option"><?= $tag->nom ?> <?php include "components/html/cross.html" ?></p>
+                    <?php 
+                        endforeach ?>
+
+                </div>
+            </div>
+
+            <div class="filter">
+                <h1>Acteurs</h1>
+                <div>
+                    
+                    <?php
+                        $statement = $bdd->requete("SELECT * FROM acteur");
+                        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($result as $acteur): ?>
+                        <p data-name="actors[]" data-value=<?= $acteur->nom ?> class="option"><?= $acteur->nom ?> <?php include "components/html/cross.html" ?></p>
+                    <?php 
+                        endforeach ?>
+
+                </div>
 
             </div>
+
         </div>
-
-        <div class="filter">
-            <h1>Acteurs</h1>
-            <div>
-                
-                <?php
-                    $statement = $bdd->requete("SELECT * FROM acteur");
-                    $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                    foreach ($result as $tag): ?>
-                    <p><?= $tag->nom ?></p>
-                <?php 
-                    endforeach ?>
-
-            </div>
-        </div>
-
-
     </div>
 
     <div class="poster-container" >
@@ -59,6 +64,8 @@ ob_start()?>
 
     </div>
 </div>
+
+<script src="js/index.js"></script>
 
 <?php $content=ob_get_clean();
 

@@ -7,8 +7,10 @@
     </div>
     <!-- Droite (Connection) -->
      <div id="right">
+        <a href="login.php">
         <span>Non connecté·e</span>
-        <?php include "avatar.html" ?>
+        <?php include "html/avatar.html" ?>
+        </a>
      </div>
 </header>
 

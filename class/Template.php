@@ -10,7 +10,7 @@ class Template
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LettreBoited</title>
-        <?php include_once "components/polices.html" ?>
+        <?php include_once "components/html/polices.html" ?>
         <link href="style/template.css" rel ="stylesheet">
     </head>
 
