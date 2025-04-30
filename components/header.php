@@ -4,7 +4,7 @@
     <!-- Gauche (titre + recherche) -->
     <div id="left">
         <span id="title">LettreBoited</span>
-        <form method="get" action="" target="_blank">
+        <form method="get" action="recherche.php" target="_self">
             <span id="search-bar"><input id="search"><?php include "searchicon.html" ?></span>
         </form>
     </div>

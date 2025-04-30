@@ -51,7 +51,11 @@ header {
 }
 
 #search-bar input:focus {
-    outline: none
+    outline: none;
+}
+
+#search-bar svg {
+    padding: 10px;
 }
 
 #right span {
