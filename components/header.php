@@ -3,10 +3,7 @@
 <header>
     <!-- Gauche (titre + recherche) -->
     <div id="left">
-        <span id="title">LettreBoited</span>
-        <form method="get" action="recherche.php" target="_self">
-            <span id="search-bar"><input id="search"><?php include "searchicon.html" ?></span>
-        </form>
+        <a id="title" href="index.php">LettreBoited</a>
     </div>
     <!-- Droite (Connection) -->
      <div id="right">

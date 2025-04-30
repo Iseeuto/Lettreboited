@@ -32,7 +32,7 @@ $requete = "SELECT * FROM serie";
 
 $statement = $pdo->prepare($requete);
 $statement->execute() or die(var_dump($statement->errorInfo())) ;
-$results = $statement->fetchAll(PDO::FETCH_CLASS, "Serie") ;
+$results = $statement->fetchAll(PDO::FETCH_CLASS, "Serie");
 
 ?>
 

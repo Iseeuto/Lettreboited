@@ -7,13 +7,13 @@
         public static $db_pwd="";
 
         public $pdo;
-        public function constructPDO(): void{
+        public function __construct(){
             try {
                 // Agrégation des informations de connexion dans une chaine DSN
-                $dsn = 'mysql:dbname=' . $this->db_name . ';host='. $this->db_host. ';port=' . $this->db_port;
+                $dsn = 'mysql:dbname=' . self::$db_name . ';host='.  self::$db_host. ';port=' .  self::$db_port;
             
                 // Connexion et récupération de l'objet connecté
-                $this->pdo = new PDO($dsn, username: $this->db_user, $this->db_pwd);
+                $this->pdo = new PDO($dsn,  self::$db_user,  self::$db_pwd);
             } catch (PDOException $ex) { ?>
                 <!-- Affichage des informations liées à l'erreur-->
                 <div style="color: red">
@@ -26,12 +26,10 @@
             }
         }
 
-        public function requete($recherche): void{
-            $requete = "SELECT * FROM serie WHERE titre = $recherche" ;
-
-            $statement = $this->pdo->prepare($requete);
+        public function requete($recherche): PDOStatement{
+            $statement = $this->pdo->prepare($recherche);
             $statement->execute() or die(var_dump($statement->errorInfo())) ;
-            $results = $statement->fetchAll(PDO::FETCH_CLASS, "Serie") ;
+            return $statement;
         }
 
         
