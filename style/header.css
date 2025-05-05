@@ -30,33 +30,12 @@ header {
     font-size: 1.4em;
 }
 
-#search-bar {
-    padding-left: 10px;
-    width: 11em;
-    height: 1.5em;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    background-color: #414040;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 3em;
+#add {
+    margin-left: 1em;
 }
 
-#search-bar input {
-    height: 100%;
-    width: 85%;
-    border: none;
-    background-color: #ffffff00;
-}
-
-#search-bar input:focus {
-    outline: none;
-}
-
-#search-bar svg {
-    padding: 10px;
+#add svg {
+    width: 100%;
 }
 
 #right a {

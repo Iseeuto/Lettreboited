@@ -15,6 +15,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
 }
 
 #filters button {
@@ -33,6 +36,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    
  }
 
 .filter {
@@ -86,11 +90,15 @@
 
 .poster-container {
     width: 70%;
-    height: 90%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 30px;
+    row-gap: 10px;
     overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
 }
 
 .poster-container .image-container {

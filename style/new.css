@@ -1,0 +1,84 @@
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#categories {
+    height: 80%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#categories a {
+    text-decoration: none;
+    font-family: "Poppins";
+    text-align: center;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .1s ease-in-out;
+}
+
+#categories a:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: black;
+}
+
+form {
+    width: 50%;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1em;
+    border-radius: 1em;
+    box-shadow: 0em 0em 5em black;
+}
+
+form * {
+    width: 80%;
+}
+
+form h1 {
+    text-align: center;
+    font-family: 'Montserrat';
+    margin-bottom: .5em;
+}
+
+form .field {
+    background-color: black;
+    outline: none;
+    padding: 1em;
+    font-family: "Poppins";
+}
+
+form button {
+    width: 50%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+    background-color: black;
+    border-radius: 1em;
+    font-family: "Poppins";
+    transition: all .1s ease-in-out;
+    border-radius: 1em;
+    border: white .2em;
+}
+
+form button:hover {
+    cursor: pointer;
+    width: 70%;
+    border: 0;
+}

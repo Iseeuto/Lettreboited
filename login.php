@@ -5,6 +5,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (isset($_GET["disconnect"])){
+    session_start();
+
+    unset($_SESSION["logged_in"]);
+
+    header("Location: index.php");
+    exit();
+}
+
 require_once __DIR__ . "/class/Autoloader.php";
 Autoloader::register();
 
@@ -13,6 +22,9 @@ $LOGIN = "admin"; $PASSWORD = "admin";
 if (isset($_POST["login"]) && isset($_POST["password"])){
     $login = $_POST["login"];
     $password = $_POST["password"];
+
+    $login = htmlspecialchars($login);
+    $password = htmlspecialchars($password);
 
     if($login == $LOGIN && $password == $PASSWORD){
         $_SESSION["logged_in"] = true;
@@ -26,7 +38,7 @@ ob_start() ?>
 
 <link href="style/login.css" rel="stylesheet">
 <div id="content">
-    <form method="POST" action=<?php if(isset($_SESSION["logged_in"])){ echo "disconnect.php"; } else {echo "login.php"; } ?>>
+    <form method="POST" action=<?php if(isset($_SESSION["logged_in"])){ echo "login.php?disconnect=true"; } else {echo "login.php"; } ?>>
 
         <?php if(isset($_SESSION["logged_in"])) : ?> 
             <h1>Vous êtes connectés !</h1>

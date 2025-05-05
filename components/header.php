@@ -13,6 +13,12 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Gauche (titre + recherche) -->
     <div id="left">
         <a id="title" href="index.php">LettreBoited</a>
+        <?php if(isset($_SESSION["logged_in"])){ ?>
+
+            <a id="add" href="new.php?type=acteur"> <?php include "html/add.html" ?> </a>
+
+        <?php }
+         ?>
     </div>
     <!-- Droite (Connection) -->
      <div id="right">
