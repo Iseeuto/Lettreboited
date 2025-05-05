@@ -37,20 +37,23 @@ $saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id")->fetchAll(P
     </div>
 </div>
 <div id="saisons-container">
-    <?php foreach($saisons as $saison){ ?>
-
-        <div class="saison">
-        <h1><?= $saison->titre ?></h1>
+    <?php foreach($saisons as $saison){ 
+        $episodes = $bdd->requete("SELECT * FROM episode WHERE idSaison = $saison->idSaison")->fetchAll(PDO::FETCH_OBJ);
+        $duree = 0;
+        foreach( $episodes as $episode ){ $duree += $episode->duree; }
+        $heures = floor($duree/60);
+        $minutes = fmod($duree, 60);
+    ?>
+    <div class="saison">
+        <h1><?= $saison->titre ?> ( <?php if($heures !=0): echo floor($duree/60); echo "h"; endif ?><?php if($minutes != 0): echo fmod($duree, 60); if($heures ==0): echo "m"; endif ?> <?php endif ?> )</h1>
         <div class="episode-container">
             <?php 
-            $episodes = $bdd->requete("SELECT * FROM episode WHERE idSaison = $saison->idSaison")->fetchAll(PDO::FETCH_OBJ);
+            
             foreach($episodes as $episode){ ?>
-                <a href=<?= "view.php?type=episode&id=" . $episode->idEpisode ?>><?= $episode->titre ?></a>
+                <a href=<?= "view.php?type=episode&id=" . $episode->idEpisode ?>> <?= $episode->numero ?> | <?= $episode->titre ?></a>
             <?php } ?>
         </div>
     </div>
 
     <?php } ?>
-
-    
 </div>
