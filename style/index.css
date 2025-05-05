@@ -4,7 +4,7 @@
     height: 90%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -15,6 +15,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
 }
 
 #filters button {
@@ -27,11 +30,13 @@
     margin-bottom: 5%;
 }
 
- #filters div {
+ #filters-container {
     width: 90%;
+    height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
+    
  }
 
 .filter {
@@ -39,7 +44,6 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .filter h1 {
@@ -50,6 +54,7 @@
 
 .filter div {
     overflow-y: auto; 
+    scrollbar-width: thin;
     width: 80%;
     border-top: solid white 2px;
 }
@@ -84,9 +89,18 @@
 }
 
 .poster-container {
-    width: 75%;
-    height: 90%;
+    width: 70%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 30px;
+    row-gap: 10px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+.poster-container .image-container {
+    margin: 5px;
 }
