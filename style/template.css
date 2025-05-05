@@ -17,4 +17,27 @@ body{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-repeat: no-repeat;
+    background-size: 500% 500%;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111; /* Couleur du fond de la scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #444; /* Couleur du "curseur" */
+    border-radius: 6px;
+    border: 3px solid #111; /* Laisse un petit espace entre le pouce et la track */
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin; /* auto | thin | none */
+    scrollbar-color: #444 #111; /* thumb color | track color */
 }

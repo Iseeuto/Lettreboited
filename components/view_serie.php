@@ -1,0 +1,56 @@
+<?php
+
+$bdd = new BDD();
+
+$result = $bdd->requete("SELECT * FROM serie WHERE idSerie = $id");
+$obj = $result->fetch(PDO::FETCH_OBJ);
+
+$titre = $obj->titre;
+$lienimage = $obj->affiche;
+$tags = $bdd->requete("SELECT * FROM tag JOIN tagdeserie ON tag.idTag = tagdeserie.idTag WHERE tagdeserie.idSerie = $id")->fetchAll(PDO::FETCH_OBJ);
+$acteurs = $bdd->requete("SELECT acteur.* FROM acteur JOIN acteurdesaison ON acteur.idActeur = acteurdesaison.idActeur JOIN saison ON acteurdesaison.idSaison = saison.idSaison WHERE saison.idSerie = $id")->fetchAll(PDO::FETCH_OBJ);
+$synopsis = $obj->synopsis;
+
+
+$saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id")->fetchAll(PDO::FETCH_OBJ);
+
+?>
+<link href="style/serie.css" rel="stylesheet">
+<div id="movie-info">
+    <div id="img-container"> <img src=<?= $lienimage ?>> </div>
+    <div id="infos">
+        <h1><?= $titre ?></h1>
+        <div id="tag-container">
+            <!--Insérer tags ici-->
+            <?php foreach($tags as $tag){ ?>
+                <a class="tag"><?= $tag->nom ?></a>
+            <?php } ?>
+        </div>
+        <p><b>Acteurs</b> 
+            <?php for($i=0; $i < count($acteurs); $i++): ?> 
+                <a href=<?= "view.php?type=acteur&id=" . $acteurs[$i]->idActeur ?>><?= $acteurs[$i]->nom ?></a> <?php if($i+1 != count($acteurs)): echo ", "; endif ?> 
+            <?php endfor ?>
+        </p>
+        <p><b>Synopsis</b> 
+            <?= $synopsis ?>
+        </p>
+    </div>
+</div>
+<div id="saisons-container">
+    <?php foreach($saisons as $saison){ ?>
+
+        <div class="saison">
+        <h1><?= $saison->titre ?></h1>
+        <div class="episode-container">
+            <?php 
+            $episodes = $bdd->requete("SELECT * FROM episode WHERE idSaison = $saison->idSaison")->fetchAll(PDO::FETCH_OBJ);
+            foreach($episodes as $episode){ ?>
+                <a href=<?= "view.php?type=episode&id=" . $episode->idEpisode ?>><?= $episode->titre ?></a>
+            <?php } ?>
+        </div>
+    </div>
+
+    <?php } ?>
+
+    
+</div>

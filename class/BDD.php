@@ -31,9 +31,6 @@
             $statement->execute() or die(var_dump($statement->errorInfo())) ;
             return $statement;
         }
-
-        
-
  
     }
 ?>
