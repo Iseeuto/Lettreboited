@@ -1,6 +1,6 @@
 <?php 
 
-$requeteDebut = "SELECT * FROM Serie";
+$requeteDebut = "SELECT * FROM Serie ";
 $condition = " WHERE ";
 $having = "GROUP BY serie.idSerie HAVING ";
 
@@ -46,4 +46,5 @@ if(isset($_POST['acteurs']) || isset($_POST['tags'])){
 else{
     $requete = $requeteDebut;
 }
+
 ?>

@@ -10,6 +10,7 @@ CREATE TABLE Tag (
 CREATE TABLE Serie (
     idSerie INT PRIMARY KEY AUTO_INCREMENT,
     titre VARCHAR(255) NOT NULL,
+    affiche VARCHAR(255) DEFAULT NULL,
     synopsis VARCHAR(255)
 );
 
