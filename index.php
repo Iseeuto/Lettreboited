@@ -8,15 +8,11 @@ $bdd = new BDD();
 
 $posters = [];
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    include "test.php";
-    $statement = $bdd->requete($requete);
-    $posters = $statement->fetchAll(PDO::FETCH_CLASS, "Serie");
-}
-else{
-    $statement =  $bdd->requete("SELECT * FROM serie");
-    $posters = $statement->fetchAll(PDO::FETCH_CLASS, "Serie");
-}
+
+include "test.php";
+$statement = $bdd->requete($requete);
+$posters = $statement->fetchAll(PDO::FETCH_CLASS, "Serie");
+
 
 ob_start()?>
 
