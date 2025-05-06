@@ -1,38 +1,80 @@
-
-
-#titre {
-    justify-content: flex-start;
-    width: 100%;               
-    font-family: 'Hammersmith One', sans-serif;
-    color: white;
-    margin-top: 20px;
-    margin-bottom: auto; 
-    margin-left: 10px;
-}
-
-#image {
-    margin-top: 30px;
+#acteur-info{
     display: flex;
-    margin-right: auto;
-    height: 300px;          
-    width: 150px;
-    width: 30%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    flex: 0 0 auto;
 }
 
+#img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
 
-.serie {
-    font-family: 'Hammersmith One', sans-serif;
+#img-container img {
+    width: 50%;
+    height: auto;
+    border: solid .5em rgba(0, 0, 0, 0.493);
+    border-radius: 1em;
+    transition: all .1s ease-in-out;
+}
+
+#infos {
+    width: 50%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-    margin-top: 20px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.episode {
-    margin: 5px 0;
-    padding: 8px 12px;
-    color: white;
-    border-radius: 10px;
-    width: fit-content;
-    margin-top: 10px;
+#infos h1 {
+    font-family: "Montserrat";
+    font-size: 30px;
+}
+
+#series {
+    margin-top: 2em;
+    height: 50%;
+    width: 90%;
+}
+
+#series h1 {
+    font-size: 20px;
+}
+
+#series-container {
+    margin-top: 1em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.356);
+    border-radius: 1em;
+    height: 85%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.poster {
+    width: 20%;
+    margin: .6em;
+    transition: all .1s ease-in-out;
+}
+
+.poster:hover {
+    transform: scale(1.05);
+}
+
+.poster img {
+    width: 100%;
+    height: auto;
+    border-radius: .5em;
 }

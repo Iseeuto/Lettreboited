@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $bdd = new BDD();
 
 $result = $bdd->requete("SELECT * FROM episode WHERE idEpisode = $id");
@@ -21,7 +23,11 @@ $saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id")->fetchAll(P
 <div id="movie-info">
     <div id="img-container"> <img src=<?= $lienimage ?>> </div>
     <div id="infos">
-        <h1><a href=<?= "view.php?type=serie&id=" . $serie->idSerie ?>> <?= $serie->titre ?> </a> -  <?= $titre ?></h1>
+        <h1><a href=<?= "view.php?type=serie&id=" . $serie->idSerie ?>> <?= $serie->titre ?> </a> -  <?= $titre ?>
+            <?php if(isset($_SESSION["logged_in"])): ?>
+                <a href=<?= "edit.php?type=episode&id=" . $obj->idEpisode ?>><?php include "html/gear.html" ?></a>
+            <?php endif ?>
+        </h1>
         <p><b>Réalisateur</b> <a href=<?= "view.php?type=realisateur&id=" . $realisateur->idRealisateur ?>><?= $realisateur->nom ?></a> </p>
         <p><b>Synopsis</b> <?= $synopsis ?> </p>
         <?php 
