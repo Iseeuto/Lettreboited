@@ -3,7 +3,7 @@
 require_once __DIR__ . "/class/Autoloader.php";
 Autoloader::register();
 
-$valid = array("acteur", "episode", "saison", "serie");
+$valid = array("acteur", "episode", "realisateur", "serie");
 $type = $_GET["type"] ?? null;
 $id = $_GET["id"] ?? null;
 if ($type === null || $id === null || !in_array($type, $valid)) { header("Location: index.php"); }

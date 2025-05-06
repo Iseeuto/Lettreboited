@@ -53,7 +53,6 @@
 #tag-container .tag {
     font-family: "Poppins";
     font-size: small;
-    width: 15%;
     height: 1.5em;
     margin-right: 1em;
     display: flex;
@@ -61,6 +60,8 @@
     align-items: center;
     border: 2px solid white;
     border-radius: .5em;
+    padding-right: .5em;
+    padding-left: .5em;
 }
 
 #infos p {
@@ -91,10 +92,41 @@ header {
 
 #saisons-container {
     width: 100%;
-    height: 100%;
-    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.saison {
+    margin-top: 4em;
+    width: 90%;
+}
+
+.saison h1 {
+    font-family: "Montserrat";
+    border-bottom: solid 5px white;
+    padding-bottom: .5em;
+}
+
+.episode-container {
+    padding: 1em;
+    margin-top: .5em;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+}
+
+.episode-container a {
+    background-color: rgb(24, 24, 24);
+    font-family: "Poppins";
+    text-decoration: none;
+    border: solid 2px white;
+    border-radius: 1em;
+    margin-right: 2em;
+    padding: 1em;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;    
 }
