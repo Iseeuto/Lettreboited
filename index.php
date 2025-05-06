@@ -28,12 +28,15 @@ ob_start()?>
                 <h1>Tags</h1>
                 <div>
                     <?php
-                        $statement = $bdd->requete("SELECT * FROM tag");
+                        $statement = $bdd->requete("SELECT * FROM tag ORDER BY nom ASC");
                         $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($result as $tag): ?>
-                        <div class="checkbox-container"><input type="checkbox"  name="tags[]" value="<?= htmlspecialchars($tag->nom) ?>"><label class="btn btn-primary" for="btn-check"><?= htmlspecialchars($tag->nom) ?></label></div>
-                    <?php 
-                        endforeach ?>
+                        $taille = count($result);
+                        for ($i = 0; $i< $taille ; $i++): 
+                            $tag = $result[$i];
+                            $nom = htmlspecialchars($tag->nom);
+                            echo "<input id = 'checkbox-$i'  type='checkbox'  name='tags[]' value= '$nom'><label for = 'checkbox-$i'>$nom</label><br>";
+                    
+                        endfor ?>
 
                 </div>
             </div>
@@ -42,12 +45,13 @@ ob_start()?>
                 <h1>Acteurs</h1>
                 <div>
                     <?php
-                        $statement = $bdd->requete("SELECT * FROM acteur");
+                        $statement = $bdd->requete("SELECT * FROM acteur ORDER BY nom ASC ");
                         $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($result as $acteur): ?>
-                        <input id = "chek" type = "checkbox" name="acteurs[]" value="<?= htmlspecialchars($acteur->nom) ?>"> <label for = "check" class = "box" ><?= htmlspecialchars($acteur->nom) ?></label>
-                    <?php 
-                        endforeach ?>
+                        for ($i = 0; $i< count($result); $i++): 
+                            $acteur = $result[$i];
+                            $nom = htmlspecialchars($acteur->nom);
+                            echo "<input id = 'checkbox-a-$i'  type='checkbox'  name='acteurs[]' value= '$nom'><label for = 'checkbox-a-$i'>$nom</label><br>";
+                        endfor ?>
                     
                 </div>
                 
