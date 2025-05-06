@@ -1,32 +1,34 @@
 <?php
 
-$lienImage = "../qui_sont_les_acteurs_les_plus_styl__s_en_activit_____3221.jpeg";
-$nomActeur = "Nom de l'acteur";
-$series = [
-    "Chute libre",
-    "Le choix",
-    "Dérapage",
-];
+session_start();
 
-$series = array_unique($series);
+$bdd = new BDD();
+
+$result = $bdd->requete("SELECT * FROM acteur WHERE idActeur = $id");
+$obj = $result->fetch(PDO::FETCH_OBJ);
+
+$nom = $obj->nom;
+$lienimage = $obj->photo;
+
+$series = $bdd->requete("SELECT DISTINCT serie.* FROM acteurdesaison JOIN saison on acteurdesaison.idSaison = saison.idSaison JOIN serie ON saison.idSerie = serie.idSerie WHERE acteurdesaison.idActeur = $id")->fetchAll(PDO::FETCH_CLASS, "Serie");
 ?>
 <link href="style/acteur.css" rel="stylesheet">
-<div class="container">
-    <div id="image">
-        <img src="<?= $lienImage ?>">
-    </div>
-
-    <div id="poster">
-        <div id="titre">
-            <h1><b><?= $nomActeur ?></b></h1>
-        </div>
-        <br>
-        <div id="information">
-            <div class="serie">
-                <h3>Oeuvres populaires :</h3>
-                <?php foreach ($series as $serie): ?>
-                    <span class="episode"><?= $serie ?></span>
-                <?php endforeach; ?>
+<div id="acteur-info">
+    <div id="img-container"> <img src=<?= $lienimage ?>> </div>
+    <div id="infos">
+        <h1><?= $nom ?> 
+            <?php if(isset($_SESSION["logged_in"])): ?>
+                <a href=<?= "edit.php?type=acteur&id=" . $obj->idActeur ?>><?php include "html/gear.html" ?></a>
+            <?php endif ?>
+        </h1>
+        <div id="series">
+            <h1>Série<?php if(count($series) > 1): echo 's'; endif ?></h1>
+            <div id="series-container">
+                <?php foreach($series as $serie): ?>
+                    <a class="poster" href=<?= "view.php?type=serie&id=" . $serie->idSerie ?>> 
+                        <img src=<?= $serie->affiche ?>>
+                    </a>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

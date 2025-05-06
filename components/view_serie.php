@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $bdd = new BDD();
 
 $result = $bdd->requete("SELECT * FROM serie WHERE idSerie = $id");
@@ -19,7 +21,11 @@ $saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id")->fetchAll(P
 <div id="movie-info">
     <div id="img-container"> <img src=<?= $lienimage ?>> </div>
     <div id="infos">
-        <h1><?= $titre ?></h1>
+        <h1><?= $titre ?>
+            <?php if(isset($_SESSION["logged_in"])): ?>
+                <a href=<?= "edit.php?type=serie&id=" . $obj->idSerie ?>><?php include "html/gear.html" ?></a>
+            <?php endif ?>
+        </h1>
         <div id="tag-container">
             <!--Insérer tags ici-->
             <?php foreach($tags as $tag){ ?>
