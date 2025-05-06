@@ -9,7 +9,7 @@ $bdd = new BDD();
 $posters = [];
 
 
-include "test.php";
+include "formIndex.php";
 $statement = $bdd->requete($requete);
 $posters = $statement->fetchAll(PDO::FETCH_CLASS, "Serie");
 
@@ -31,7 +31,7 @@ ob_start()?>
                         $statement = $bdd->requete("SELECT * FROM tag");
                         $result = $statement->fetchAll(PDO::FETCH_OBJ);
                         foreach ($result as $tag): ?>
-                        <input type="checkbox" name="tags[]" value="<?= htmlspecialchars($tag->nom) ?>" class="option"><?= $tag->nom ?> <?php include "components/html/cross.html" ?>
+                        <div class="checkbox-container"><input type="checkbox"  name="tags[]" value="<?= htmlspecialchars($tag->nom) ?>"><label class="btn btn-primary" for="btn-check"><?= htmlspecialchars($tag->nom) ?></label></div>
                     <?php 
                         endforeach ?>
 
@@ -45,7 +45,7 @@ ob_start()?>
                         $statement = $bdd->requete("SELECT * FROM acteur");
                         $result = $statement->fetchAll(PDO::FETCH_OBJ);
                         foreach ($result as $acteur): ?>
-                        <input type = "checkbox" name="acteurs[]" value="<?= htmlspecialchars($acteur->nom) ?>" class="option"><?= $acteur->nom ?> <?php include "components/html/cross.html" ?>
+                        <input id = "chek" type = "checkbox" name="acteurs[]" value="<?= htmlspecialchars($acteur->nom) ?>"> <label for = "check" class = "box" ><?= htmlspecialchars($acteur->nom) ?></label>
                     <?php 
                         endforeach ?>
                     
