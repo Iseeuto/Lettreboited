@@ -73,6 +73,13 @@ ob_start();
     if (!$donnees) {
         die("Pas de données trouvées");
     } else {
+        ?>
+        
+        <input class="field" autocomplete="off" name="<?= htmlspecialchars($primaryKey) ?>" 
+            type="text" placeholder="<?= htmlspecialchars($primaryKey) ?>"
+            value="<?= htmlspecialchars($donnees[$primaryKey]) ?>">
+
+        <?php
         foreach($columns as $col) { ?>
             <input class="field" autocomplete="off" name="<?= htmlspecialchars($col) ?>" 
                    type="text" placeholder="<?= htmlspecialchars($col) ?>"
