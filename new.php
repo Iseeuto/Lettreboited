@@ -18,10 +18,7 @@ if($type == null) header("Location: index.php");
 // Récupérer le nom des champs
 $query = $bdd->pdo->query("DESCRIBE $type");
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-    // On ignore les colonnes AUTO_INCREMENT
-    if ($row['Extra'] !== 'auto_increment') {
-        $columns[] = $row['Field'];
-    }
+    $columns[] = $row['Field'];
 }
 
 
