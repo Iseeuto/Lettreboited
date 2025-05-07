@@ -19,7 +19,7 @@ class Template
         <?php include "components/header.php" ?>
         
         <?= $content ?>
-
+        <?php include "components/footer.php" ?>
 
     </body>
     </html>
