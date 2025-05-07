@@ -13,12 +13,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Gauche (titre + recherche) -->
     <div id="left">
         <a id="title" href="index.php">LettreBoited</a>
+        <a id="search" href="search.php"> <?php include "html/searchicon.html" ?> </a>
         <?php if(isset($_SESSION["logged_in"])){ ?>
-
-            <a id="search" href="search.php"> <?php include "html/searchicon.html" ?> </a>
-
             <a id="add" href="new.php?type=acteur"> <?php include "html/add.html" ?> </a>
-
         <?php }
          ?>
     </div>
