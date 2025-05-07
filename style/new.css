@@ -82,3 +82,11 @@ form button:hover {
     width: 70%;
     border: 0;
 }
+
+form select {
+    outline: none;
+    background-color: black;
+    padding: 1em;
+    border: inset grey;
+    width: 85%;
+}
