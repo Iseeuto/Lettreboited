@@ -1,0 +1,129 @@
+
+#content {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#filters { 
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+#filters form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+#filters button{
+    background-color: rgba(240, 248, 255, 0);
+    border-radius: 10px;
+    border: solid white 2px;
+    font-family: 'Poppins';
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-top: 70%;
+    cursor:pointer;
+    transition: all .1s ease-in-out;
+}
+
+#filters button:hover {
+    border: solid black 2px;
+    background-color: white;
+    color: black;
+}
+
+.filter {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter h1 {
+    user-select: none;
+    font-family: 'Poppins';
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.filter div {
+    height: auto;
+    overflow-y: auto; 
+    scrollbar-width: thin;
+    border-top: solid white 2px;
+}
+
+.hidden {
+    display: none;
+}
+
+.poster-container {
+    width: 70%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: .1em;
+    grid-auto-rows: min-content;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+.image-container {
+    margin: .5em;
+}
+
+.image-container:hover {
+    transform: scale(1.05);
+    border: solid .2em white;
+}
+
+.image-container:hover img {
+    filter: blur(.5em);
+}
+
+.image-container:hover h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter div label{
+    background-color: rgba(240, 248, 255, 0);
+    border-radius: 5px;
+
+    font-family: 'Poppins';
+    font-size: small;
+    margin-bottom: 10px;
+    cursor:pointer;
+    margin: 1em;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked+label{
+    border: solid 2px;
+    border-color: rgb(72, 88, 228);
+    background-color: #e0f0ff56;
+}

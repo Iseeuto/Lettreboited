@@ -1,95 +1,79 @@
-
 <?php
-
 require_once __DIR__ . "/class/Autoloader.php";
 Autoloader::register();
 
+ob_start();
+
 $bdd = new BDD();
 
-$posters = [];
-
-
-include "formIndex.php";
-$statement = $bdd->requete($requete);
+$statement = $bdd->requete("SELECT * FROM serie ORDER BY titre ASC");
 $posters = $statement->fetchAll(PDO::FETCH_CLASS, "Serie");
 
+$statement = $bdd->requete("SELECT * FROM acteur WHERE idActeur < 9");
+$posters_acteur = $statement->fetchAll(PDO::FETCH_CLASS, "Acteur");
+?>
 
-ob_start()?>
-
-<link href="style/poster.css" rel="stylesheet">
 <link href="style/index.css" rel="stylesheet">
+<link href="style/poster.css" rel="stylesheet">
 
-<div id="content">
-
-    <div id="filters">
-    <a href="acceuil.php">TEST</a>
-        <form action = "index.php" method ="post"><button type="submit">Rechercher</button>
-            <div class="filter">
-                <h1>Tags</h1>
-                <div>
-                    <?php
-                        $statement = $bdd->requete("SELECT DISTINCT * FROM tag ORDER BY nom ASC");
-                        $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                        $taille = count($result);
-                        for ($i = 0; $i< $taille ; $i++): 
-                            $tag = $result[$i];
-                            $nom = htmlspecialchars($tag->nom);
-                            echo "<input id = 'checkbox-$i'  type='checkbox'  name='tags[]' value= '$nom'><label for = 'checkbox-$i'>$nom</label><br>";
-                    
-                        endfor ?>
-
-                </div>
-            </div>
-
-            <div class="filter">
-                <h1>Acteurs</h1>
-                <div>
-                    <?php
-                        $statement = $bdd->requete("SELECT * FROM acteur ORDER BY nom ASC ");
-                        $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                        for ($i = 0; $i< count($result); $i++): 
-                            $acteur = $result[$i];
-                            $nom = htmlspecialchars($acteur->nom);
-                            echo "<input id = 'checkbox-a-$i'  type='checkbox'  name='acteurs[]' value= '$nom'><label for = 'checkbox-a-$i'>$nom</label><br>";
-                        endfor ?>
-                    
-                </div>
-            </div>
-
-            <div class="filter">
-                <h1>Réalisateur</h1>
-                <div>
-                    <?php
-                        $statement = $bdd->requete("SELECT * FROM realisateur ORDER BY nom ASC ");
-                        $result = $statement->fetchAll(PDO::FETCH_OBJ);
-                        for ($i = 0; $i< count($result); $i++): 
-                            $real = $result[$i];
-                            $nom = htmlspecialchars($real->nom);
-                            echo "<input id = 'checkbox-r-$i'  type='checkbox'  name='realisateurs[]' value= '$nom'><label for = 'checkbox-r-$i'>$nom</label><br>";
-                        endfor ?>
-                    
-                </div>
-                
-            </div>
-        </form>
+<div class="block1">
+    <div id="titreblock1">
+        <h1>Nouveauté</h1>
     </div>
 
-    <div class="poster-container" >
+    <div class="slider-container">
+        <button class="scroll-btn">❮</button>
 
-        <?php 
-            foreach ($posters as $serie):?>
-            <?= $serie->get_clickable_poster() ?>
-        <?php endforeach ?>
+        <div id="LesOeuvres">
+            <?php foreach ($posters as $serie): ?>
+                <?=$serie->get_clickable_poster() ?>
+            <?php endforeach; ?>
+        </div>
 
+        <button class="scroll-btn">❯</button>
+    </div>
+
+    <div class="titreblock2">
+        <h1>Acteurs populaires</h1>
+    </div>
+
+    <div class="slider-container">
+        <button class="scroll-btn">❮</button>
+
+        <div id="LesOeuvres2">
+        <?php foreach ($posters_acteur as $acteur): ?>
+            <?=$acteur->get_clickable_poster() ?>
+            <?php endforeach; ?>
+        </div>
+
+        <button class="scroll-btn">❯</button>
     </div>
 </div>
 
-<script src="js/index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sliders = [
+            { containerId: "LesOeuvres", leftBtnIndex: 0, rightBtnIndex: 1 },
+            { containerId: "LesOeuvres2", leftBtnIndex: 2, rightBtnIndex: 3 }
+        ];
 
-<?php 
+        const buttons = document.querySelectorAll(".scroll-btn");
 
-$content=ob_get_clean();
+        sliders.forEach((slider) => {
+            const container = document.getElementById(slider.containerId);
 
+            buttons[slider.leftBtnIndex].addEventListener("click", () => {
+                container.scrollBy({ left: -300, behavior: "smooth" });
+            });
+
+            buttons[slider.rightBtnIndex].addEventListener("click", () => {
+                container.scrollBy({ left: 300, behavior: "smooth" });
+            });
+        });
+    });
+</script>
+
+<?php
+$content = ob_get_clean();
 Template::render($content);
-
 ?>

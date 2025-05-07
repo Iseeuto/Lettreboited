@@ -6,6 +6,7 @@ class Serie {
         ?>
         <a class="image-container" href=<?= "view.php?type=serie&id=$this->idSerie"; ?>>
             <img src=<?= $this->affiche ?>>
+            <h1><?= $this->titre ?></h1>
         </a>
 
     <?php

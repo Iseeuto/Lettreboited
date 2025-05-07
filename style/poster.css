@@ -4,6 +4,7 @@
     overflow: hidden;
     border-radius: 8px;
     background-color: #000; /* pour éviter l'effet de vide pendant le chargement */
+    position: relative;
 }
 
 .image-container:hover {
@@ -11,8 +12,22 @@
 }
 
 .image-container img {
+    transition: all .1s ease-in-out;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.image-container h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    font-family: "Poppins";
+    font-size: .8em;
+    align-items: center;
+    display: none;
 }

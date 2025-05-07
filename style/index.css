@@ -1,107 +1,67 @@
-
-#content {
-    width: 100%;
-    height: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#filters { 
-    
-    width: 20%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.507);
-    border-top-right-radius: 1em;
-    border-top-left-radius: 1em;
-}
-
-#filters form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#filters button{
-    background-color: rgba(240, 248, 255, 0);
-    border-radius: 10px;
-    border: solid white 2px;
-    font-family: 'Poppins';
-    padding: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
-    margin-bottom: 5%;
-    cursor:pointer;
-    transition: all .1s ease-in-out;
-}
-
-#filters button:hover {
-    transform: scale(1.05);
-    border: black;
-    background-color: white;
-    color: black;
-}
-
-.filter {
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.filter h1 {
-    user-select: none;
-    font-family: 'Poppins';
-    font-size: 1em;
-}
-
-.filter div {
-    overflow-y: auto; 
-    scrollbar-width: thin;
-    border-top: solid white 2px;
-}
-
-.hidden {
-    display: none;
-}
-
-.poster-container {
-    width: 70%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 30px;
-    row-gap: 10px;
+body {
+    color: white;
+    font-family: 'Hammersmith One', sans-serif;
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.507);
-    border-top-right-radius: 1em;
-    border-top-left-radius: 1em;
+}
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
 }
 
-.filter div label{
-    background-color: rgba(240, 248, 255, 0);
-    border-radius: 5px;
-
-    font-family: 'Poppins';
-    font-size: small;
-    margin-bottom: 10px;
-    cursor:pointer;
-    margin: 1em;
+#LesOeuvres {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1%;
+    padding: 1%;
+    width: 100%; 
 }
 
-input[type="checkbox"] {
-    display: none;
+#LesOeuvres2 {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2%;
+    padding: 1%;
+    width: 100%; 
 }
 
-input[type="checkbox"]:checked+label{
-    border: solid 2px;
-    border-color: rgb(72, 88, 228);
-    background-color: #e0f0ff56;
+#LesOeuvres2 img {
+    width: 150px;
+    height: auto;
+    border-radius: 1%;
+}
+
+#LesOeuvres img {
+    width: 150px;
+    height: auto;
+    border-radius: 1%;
+}
+
+.scroll-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 1%; 
+}
+
+.information {
+    display: flex;
+    padding: 2%;
+}
+
+#info1, #info2 {
+    font-family: 'Hammersmith One', sans-serif;
+}
+
+#info1 {
+    margin-left: -160%;
+    width: 100%;
+}
+
+#info2{
+    width: 100%;
+    margin-left: 100%;
 }

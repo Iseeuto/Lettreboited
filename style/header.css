@@ -49,6 +49,14 @@ header {
     width: 100%;
 }
 
+#search {
+    margin-left: 1em;
+}
+
+#search svg {
+    width: 100%;
+}
+
 #right a {
     text-decoration: none;
     height: 100%;
