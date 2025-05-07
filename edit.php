@@ -41,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE `$type` SET " . implode(', ', $set) . " WHERE `$primaryKey` = :id";
     $stmt = $bdd->pdo->prepare($sql);
     $stmt->execute($params) or die("Oups");
+
+    // Redirection vers la page pour voir les changements
+    header("Location: view.php?type=$type&id=$id");
 }
 
 ob_start();
@@ -60,7 +63,7 @@ ob_start();
     $donnees = $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
 
     if (!$donnees) {
-        echo "<p style='color:red;'>❌ Donnée non trouvée.</p>";
+        die("Pas de données trouvées");
     } else {
         foreach($columns as $col) { ?>
             <input class="field" autocomplete="off" name="<?= htmlspecialchars($col) ?>" 

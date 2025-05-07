@@ -14,7 +14,7 @@ $acteurs = $bdd->requete("SELECT acteur.* FROM acteur JOIN acteurdesaison ON act
 $synopsis = $obj->synopsis;
 
 
-$saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id")->fetchAll(PDO::FETCH_OBJ);
+$saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id ORDER BY saison.numero ASC")->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 <link href="style/serie.css" rel="stylesheet">
@@ -44,7 +44,7 @@ $saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id")->fetchAll(P
 </div>
 <div id="saisons-container">
     <?php foreach($saisons as $saison){ 
-        $episodes = $bdd->requete("SELECT * FROM episode WHERE idSaison = $saison->idSaison")->fetchAll(PDO::FETCH_OBJ);
+        $episodes = $episodes = $bdd->requete("SELECT * FROM episode WHERE idSaison = $saison->idSaison ORDER BY episode.numero ASC")->fetchAll(PDO::FETCH_OBJ);
         $duree = 0;
         foreach( $episodes as $episode ){ $duree += $episode->duree; }
         $heures = floor($duree/60);
