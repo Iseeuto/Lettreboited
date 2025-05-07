@@ -15,34 +15,43 @@
     display: flex;
     
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.507);
     border-top-right-radius: 1em;
     border-top-left-radius: 1em;
 }
 
+#filters form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #filters button{
     background-color: rgba(240, 248, 255, 0);
     border-radius: 10px;
-    width: 50%;
     border: solid white 2px;
     font-family: 'Poppins';
-    padding: 10px;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
     margin-bottom: 5%;
     cursor:pointer;
+    transition: all .1s ease-in-out;
 }
 
- #filters-container {
-    width: 90%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    
- }
+#filters button:hover {
+    transform: scale(1.05);
+    border: black;
+    background-color: white;
+    color: black;
+}
 
 .filter {
-    width: 100%;
+    width: 90%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -57,7 +66,6 @@
 .filter div {
     overflow-y: auto; 
     scrollbar-width: thin;
-    width: 80%;
     border-top: solid white 2px;
 }
 
@@ -78,24 +86,23 @@
     border-top-left-radius: 1em;
 }
 
-label{
+.filter div label{
     background-color: rgba(240, 248, 255, 0);
     border-radius: 5px;
-    width: 70%;
 
     font-family: 'Poppins';
     font-size: small;
-    padding: 2px;
     margin-bottom: 10px;
     cursor:pointer;
-  }
+    margin: 1em;
+}
 
-  input[type="checkbox"] {
+input[type="checkbox"] {
     display: none;
-  }
+}
 
-  input[type="checkbox"]:checked+label{
+input[type="checkbox"]:checked+label{
     border: solid 2px;
-    border-color: rgb(255, 81, 0);
+    border-color: rgb(72, 88, 228);
     background-color: #e0f0ff56;
-  }
+}

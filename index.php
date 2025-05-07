@@ -22,7 +22,6 @@ ob_start()?>
 <div id="content">
 
     <div id="filters">
-        <div>
         <form action = "index.php" method ="post"><button type="submit">Rechercher</button>
             <div class="filter">
                 <h1>Tags</h1>
@@ -56,9 +55,7 @@ ob_start()?>
                 </div>
                 
             </div>
-            </form>
-
-        </div>
+        </form>
     </div>
 
     <div class="poster-container" >
