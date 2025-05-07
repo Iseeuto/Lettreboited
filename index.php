@@ -22,13 +22,12 @@ ob_start()?>
 <div id="content">
 
     <div id="filters">
-        <div>
         <form action = "index.php" method ="post"><button type="submit">Rechercher</button>
             <div class="filter">
                 <h1>Tags</h1>
                 <div>
                     <?php
-                        $statement = $bdd->requete("SELECT * FROM tag ORDER BY nom ASC");
+                        $statement = $bdd->requete("SELECT DISTINCT * FROM tag ORDER BY nom ASC");
                         $result = $statement->fetchAll(PDO::FETCH_OBJ);
                         $taille = count($result);
                         for ($i = 0; $i< $taille ; $i++): 
@@ -54,11 +53,24 @@ ob_start()?>
                         endfor ?>
                     
                 </div>
+            </div>
+
+            <div class="filter">
+                <h1>Réalisateur</h1>
+                <div>
+                    <?php
+                        $statement = $bdd->requete("SELECT * FROM realisateur ORDER BY nom ASC ");
+                        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+                        for ($i = 0; $i< count($result); $i++): 
+                            $real = $result[$i];
+                            $nom = htmlspecialchars($real->nom);
+                            echo "<input id = 'checkbox-r-$i'  type='checkbox'  name='realisateurs[]' value= '$nom'><label for = 'checkbox-r-$i'>$nom</label><br>";
+                        endfor ?>
+                    
+                </div>
                 
             </div>
-            </form>
-
-        </div>
+        </form>
     </div>
 
     <div class="poster-container" >
