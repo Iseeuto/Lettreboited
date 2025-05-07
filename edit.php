@@ -12,22 +12,30 @@ $type = $_GET['type'] ?? '';
 $id = $_GET['id'] ?? '';
 $columns = [];
 
-// Liste blanche des tables autorisées (à adapter)
+// Liste blanche des tables autorisées
 $valid = ["serie", "acteur", "realisateur", "tag", "episode", "saison"];
 if (!in_array($type, $valid)) header("Location: index.php");
 
-// Récupérer les champs de la table (hors auto_increment)
+// Récupération des champs de la table
 $query = $bdd->pdo->query("DESCRIBE `$type`");
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     if ($row['Extra'] !== 'auto_increment') {
         $columns[] = $row['Field'];
     } else {
-        $primaryKey = $row['Field']; // On récupère aussi la clé primaire
+        $primaryKey = $row['Field'];
     }
 }
 
-// Traitement du formulaire
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Suppression de l'élément
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] === 'delete') {
+    $stmt = $bdd->pdo->prepare("DELETE FROM `$type` WHERE `$primaryKey` = :id");
+    $stmt->execute(['id' => $id]) or die("Erreur lors de la suppression");
+    header("Location: index.php?type=$type");
+    exit;
+}
+
+// Mise à jour de l'élément
+if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($_POST['action']) || $_POST['action'] === 'update')) {
     $set = [];
     $params = [];
 
@@ -42,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $bdd->pdo->prepare($sql);
     $stmt->execute($params) or die("Oups");
 
-    // Redirection vers la page pour voir les changements
     header("Location: view.php?type=$type&id=$id");
+    exit;
 }
 
 ob_start();
@@ -55,9 +63,9 @@ ob_start();
     <h1><?= ucfirst(htmlspecialchars($type)) ?></h1>
 
     <input type="hidden" name="type" value="<?= htmlspecialchars($type) ?>">
+    <input type="hidden" name="action" value="update">
 
     <?php 
-    // Charger les données actuelles
     $stmt = $bdd->pdo->prepare("SELECT * FROM `$type` WHERE `$primaryKey` = :id");
     $stmt->execute(['id' => $id]);
     $donnees = $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
@@ -73,6 +81,14 @@ ob_start();
 
         <button type="submit">Mettre à jour</button>
     <?php } ?>
+</form>
+
+<!-- Formulaire de suppression -->
+<form method="POST" style="margin-top: 1em;" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément ?');">
+    <input type="hidden" name="action" value="delete">
+    <button type="submit" style="background-color: red; color: white; margin-top: 1em;">
+        Supprimer
+    </button>
 </form>
 
 <?php 

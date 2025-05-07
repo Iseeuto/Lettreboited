@@ -9,7 +9,7 @@ Autoloader::register();
 
 $bdd = new BDD();
 
-$valid = array("acteur", "episode", "realisateur", "saison", "serie", "tag");
+$valid = array("acteur", "episode", "realisateur", "saison", "serie", "tag", "acteurdesaison", "tagdeserie");
 $type = $_GET["type"] ?? $_POST["type"] ?? null;
 $columns = [];
 

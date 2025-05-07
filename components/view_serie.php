@@ -51,7 +51,11 @@ $saisons = $bdd->requete("SELECT * FROM saison WHERE idSerie = $id ORDER BY sais
         $minutes = fmod($duree, 60);
     ?>
     <div class="saison">
-        <h1><?= $saison->titre ?> ( <?php if($heures !=0): echo floor($duree/60); echo "h"; endif ?><?php if($minutes != 0): echo fmod($duree, 60); if($heures ==0): echo "m"; endif ?> <?php endif ?> )</h1>
+        <h1><?= $saison->titre ?> ( <?php if($heures !=0): echo floor($duree/60); echo "h"; endif ?><?php if($minutes != 0): echo fmod($duree, 60); if($heures ==0): echo "m"; endif ?> <?php endif ?> )
+            <?php if(isset($_SESSION["logged_in"])): ?>
+                <a href=<?= "edit.php?type=saison&id=" . $saison->idSaison ?>><?php include "html/gear.html" ?></a>
+            <?php endif ?>
+        </h1>
         <div class="episode-container">
             <?php 
             
