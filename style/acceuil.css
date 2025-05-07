@@ -1,0 +1,80 @@
+body {
+    color: white;
+    font-family: 'Hammersmith One', sans-serif;
+    overflow-y: auto;
+}
+
+.block1 {
+    padding: 2%;
+}
+
+#titreblock1 h1 {
+    margin-bottom: 2%;
+}
+
+#titreblock2 h1 {
+    margin-top: 3%;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+#LesOeuvres {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1%;
+    padding: 1%;
+    width: 100%; 
+}
+
+#LesOeuvres2 {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2%;
+    padding: 1%;
+    width: 100%; 
+}
+
+#LesOeuvres2 img {
+    width: 150px;
+    height: auto;
+    border-radius: 1%;
+}
+
+#LesOeuvres img {
+    width: 150px;
+    height: auto;
+    border-radius: 1%;
+}
+
+.scroll-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 1%; 
+}
+
+.information {
+    display: flex;
+    padding: 2%;
+}
+
+#info1, #info2 {
+    font-family: 'Hammersmith One', sans-serif;
+}
+
+#info1 {
+    margin-left: -160%;
+    width: 100%;
+}
+
+#info2{
+    width: 100%;
+    margin-left: 100%;
+}

@@ -22,6 +22,7 @@ ob_start()?>
 <div id="content">
 
     <div id="filters">
+    <a href="acceuil.php">TEST</a>
         <form action = "index.php" method ="post"><button type="submit">Rechercher</button>
             <div class="filter">
                 <h1>Tags</h1>
